@@ -7,10 +7,23 @@ export const Evaluate = () => {
 
   const [input, setInput] = useState("");
   const [answer, setAnswer] = useState("");
+
+  const array: string[] = [];
+
+  const [list, setList] = useState(array);
+
+  function handleClick() {
+    setAnswer(input + " = " + math.evaluate(input));
+    setInput("");
+    const newList = list.concat(answer);
+    setList(newList);
+    console.log(list);
+  }
   return (
     <Box>
       <Box maxWidth="xs" sx={{ fontSize: 20 }}>
-        {answer}
+        {/* {answer} */}
+        {list}
       </Box>
       <Stack spacing={2} direction="row">
         <TextField
@@ -19,13 +32,7 @@ export const Evaluate = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <Button
-          onClick={() => {
-            setAnswer(input + " = " + math.evaluate(input));
-            setInput("");
-          }}
-          variant="contained"
-        >
+        <Button onClick={handleClick} variant="contained">
           Evaluate
         </Button>
       </Stack>
