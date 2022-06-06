@@ -1,6 +1,7 @@
 import { TextField, Button, Stack, Box } from "@mui/material";
 import React, { useState } from "react";
-import { create, all } from "mathjs";
+import { create, all, isUndefined } from "mathjs";
+import { error } from "console";
 
 export const Evaluate = () => {
   const math = create(all);
@@ -11,20 +12,53 @@ export const Evaluate = () => {
   const [list, setList] = useState<string[]>([]);
 
   const handleClick = () => {
-    if (input !== "") {
+    try {
+      if (input === "" || input === undefined || input === null) {
+        throw new Error("missing");
+      }
+      console.log(math.evaluate(input));
       const ans = input + " = " + math.evaluate(input);
       const newList = [...list, ans];
       setAnswer(ans);
       setList(newList);
       setInput("");
-    }
-    if (input === "") {
-      try {
-        alert("Input field is empty. Please enter an expression to evaluate");
-      } catch (error) {
-        alert("Please try again with a valid expression");
+    } catch (err: any) {
+      console.log(err);
+      switch (err.message) {
+        case "missing":
+          alert("You're missing input");
+          break;
+        case `Undefined symbol ${input}`:
+          alert("cannot read input");
+          break;
+
+        default:
+          break;
       }
+
+      // alert(err);
     }
+    // if (input !== "") {
+    //   const ans = input + " = " + math.evaluate(input);
+    //   const newList = [...list, ans];
+    //   setAnswer(ans);
+    //   setList(newList);
+    //   setInput("");
+    // } else if (input === "") {
+    //   try {
+    //     alert("Input field is empty. Please enter an expression to evaluate");
+    //   } catch (error) {
+    //     alert("Please try again with a valid expression");
+    //   }
+    // } else if (math.evaluate(input) === undefined) {
+    //   try {
+    //     alert(
+    //       "Input is undefined. Please try again with a different expression"
+    //     );
+    //   } catch (error) {
+    //     alert("Please try again with a valid expression");
+    //   }
+    // }
   };
 
   function ListItem(props: {
