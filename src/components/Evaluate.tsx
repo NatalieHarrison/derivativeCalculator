@@ -1,4 +1,4 @@
-import { TextField, Button, Stack, Box } from "@mui/material";
+import { TextField, Button, Stack, Box, List, ListItem } from "@mui/material";
 import React, { useState } from "react";
 import { create, all } from "mathjs";
 
@@ -30,34 +30,10 @@ export const Evaluate = () => {
         case `Undefined symbol ${input}`:
           alert("Variables cannot be defined here.");
           break;
-
         default:
           break;
       }
-
-      // alert(err);
     }
-    // if (input !== "") {
-    //   const ans = input + " = " + math.evaluate(input);
-    //   const newList = [...list, ans];
-    //   setAnswer(ans);
-    //   setList(newList);
-    //   setInput("");
-    // } else if (input === "") {
-    //   try {
-    //     alert("Input field is empty. Please enter an expression to evaluate");
-    //   } catch (error) {
-    //     alert("Please try again with a valid expression");
-    //   }
-    // } else if (math.evaluate(input) === undefined) {
-    //   try {
-    //     alert(
-    //       "Input is undefined. Please try again with a different expression"
-    //     );
-    //   } catch (error) {
-    //     alert("Please try again with a valid expression");
-    //   }
-    // }
   };
 
   function ListItem(props: {
@@ -79,11 +55,11 @@ export const Evaluate = () => {
   return (
     <Box>
       <Box maxWidth="xs" sx={{ fontSize: 20 }}>
-        <ul>
+        <List>
           {list.map((lists) => (
             <ListItem key={lists.toString()} value={lists} />
           ))}
-        </ul>
+        </List>
       </Box>
       <Stack spacing={2} direction="row">
         <TextField
