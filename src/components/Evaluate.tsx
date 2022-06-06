@@ -1,7 +1,6 @@
 import { TextField, Button, Stack, Box } from "@mui/material";
 import React, { useState } from "react";
-import { create, all, isUndefined } from "mathjs";
-import { error } from "console";
+import { create, all } from "mathjs";
 
 export const Evaluate = () => {
   const math = create(all);
@@ -26,10 +25,10 @@ export const Evaluate = () => {
       console.log(err);
       switch (err.message) {
         case "missing":
-          alert("You're missing input");
+          alert("Input is empty. Please enter an expression.");
           break;
         case `Undefined symbol ${input}`:
-          alert("cannot read input");
+          alert("Variables cannot be defined here.");
           break;
 
         default:
