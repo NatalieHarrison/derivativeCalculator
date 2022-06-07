@@ -54,7 +54,7 @@ export const Evaluate = () => {
   }
   return (
     <Box>
-      <Box maxWidth="xs" sx={{ fontSize: 20 }}>
+      <Box maxWidth="xs" sx={{ ml: 7, fontSize: 25 }}>
         <List>
           {list.map((lists) => (
             <ListItem key={lists.toString()} value={lists} />
