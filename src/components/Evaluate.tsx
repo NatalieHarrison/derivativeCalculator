@@ -10,6 +10,7 @@ export const Evaluate = () => {
 
   const [list, setList] = useState<string[]>([]);
 
+
   const handleClick = () => {
     try {
       if (input === "" || input === undefined || input === null) {
@@ -21,17 +22,18 @@ export const Evaluate = () => {
       setAnswer(ans);
       setList(newList);
       setInput("");
-    } catch (err: any) {
+    } 
+    catch (err: any) {
       console.log(err);
       switch (err.message) {
         case "missing":
           alert("Input is empty. Please enter an expression.");
           break;
-        case `Undefined symbol ${input}`:
-          alert("Variables cannot be defined here.");
-          break;
-        default:
-          break;
+        // case `Undefined symbol ${input}`:
+        //   alert("Variables cannot be defined here.");
+        //   break;
+        // default:
+        //   break;
       }
     }
   };

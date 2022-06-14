@@ -5,6 +5,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.2",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
@@ -14,9 +15,11 @@
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.5",
     "mathjs": "^10.6.1",
+    "mathjs-simple-integral": "^0.1.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
-    "react-scripts": "5.0.1",
+    "react-mathlive": "^3.0.5-preview.1",
+    "react-scripts": "^5.0.1",
     "typescript": "^4.6.4",
     "web-vitals": "^2.1.4"
   },
