@@ -23,16 +23,20 @@ export const Simplify = () => {
         
         if (ans.includes("pi")){
           let ansAddPiSymbol = ans.replaceAll("pi","π" )
-
-
           const newList = [...list, ansAddPiSymbol];
           setAnswer(ansAddPiSymbol);
           setList(newList);
           setInput("");
-
         }
       }
-
+      if (input.includes("√(")){
+        let input2 = input.replaceAll("√" ,"sqrt");
+        const ans = input + "=" + math.simplify(input2).toString();
+        const newList = [...list, ans];
+          setAnswer(ans);
+          setList(newList);
+          setInput("");
+      }
       else{
         console.log(math.evaluate(input));
           const ans = input + " = " + math.simplify(input);
@@ -40,7 +44,6 @@ export const Simplify = () => {
           setAnswer(ans);
           setList(newList);
           setInput("");
-
         }
       
       // const ans = input + "=" + math.simplify(input).toString();
@@ -100,14 +103,16 @@ export const Simplify = () => {
           </Button>
         </Stack>
         <ButtonGroup disableElevation variant="contained">
-            <Button onClick = {() => setInput(input + "π")}
-            
+            <Button 
+            onClick = {() => setInput(input + "π")}
             sx = {{
               fontSize: 30
             }}>𝝅</Button>
-            <Button sx = {{
+            <Button 
+            onClick = {() => setInput(input + "√()")}
+            sx = {{
               fontSize: 20
-            }}>√k</Button>
+            }}>√</Button>
         </ButtonGroup>
       </Box>
 

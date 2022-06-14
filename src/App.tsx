@@ -50,6 +50,8 @@ function App() {
   const simplifyClick = () => {
     setShowSimplify(current => !current);
   }
+
+  
   return (
     <div className="App">
 
