@@ -16,15 +16,23 @@ export const Simplify = () => {
       if (input === "" || input === undefined || input === null) {
         throw new Error("missing");
       }
-      if (input.includes("𝝅")){
-        let input2 = input.replace("𝝅", "pi");
+      if (input.includes("π")){
+        let input2 = input.replaceAll("π", "pi");
         console.log(input2)
         const ans = input + "=" + math.simplify(input2).toString();
-        const newList = [...list, ans];
-        setAnswer(ans);
-        setList(newList);
-        setInput("");
+        
+        if (ans.includes("pi")){
+          let ansAddPiSymbol = ans.replaceAll("pi","π" )
+
+
+          const newList = [...list, ansAddPiSymbol];
+          setAnswer(ansAddPiSymbol);
+          setList(newList);
+          setInput("");
+
+        }
       }
+
       else{
         console.log(math.evaluate(input));
           const ans = input + " = " + math.simplify(input);
@@ -92,7 +100,7 @@ export const Simplify = () => {
           </Button>
         </Stack>
         <ButtonGroup disableElevation variant="contained">
-            <Button onClick = {() => setInput(input + "𝝅")}
+            <Button onClick = {() => setInput(input + "π")}
             
             sx = {{
               fontSize: 30
