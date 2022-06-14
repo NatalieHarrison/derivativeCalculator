@@ -1,4 +1,4 @@
-import { TextField, Button, Stack, Box, List, ListItem } from "@mui/material";
+import { TextField, Button, Stack, Box, List, ButtonGroup} from "@mui/material";
 import React, { useState } from "react";
 import { create, all } from "mathjs";
 
@@ -16,12 +16,43 @@ export const Evaluate = () => {
       if (input === "" || input === undefined || input === null) {
         throw new Error("missing");
       }
-      console.log(math.evaluate(input));
-      const ans = input + " = " + math.evaluate(input);
-      const newList = [...list, ans];
-      setAnswer(ans);
-      setList(newList);
-      setInput("");
+
+      if (input.includes("π")){
+        let input2 = input.replaceAll("π", "pi");
+        console.log(input2)
+        const ans = input + "=" + math.evaluate(input2).toString();
+        const newList = [...list, ans];
+        setAnswer(ans);
+        setList(newList);
+        setInput("");
+      }
+      if (input.includes("√(")){
+        let input2 = input.replaceAll("√" ,"sqrt");
+        const ans = input + "=" + math.simplify(input2).toString();
+        const newList = [...list, ans];
+          setAnswer(ans);
+          setList(newList);
+          setInput("");
+      }
+
+      else{
+        console.log(math.evaluate(input));
+          const ans = input + " = " + math.simplify(input);
+          const newList = [...list, ans];
+          setAnswer(ans);
+          setList(newList);
+          setInput("");
+        }
+
+
+
+
+      // console.log(math.evaluate(input));
+      // const ans = input + " = " + math.evaluate(input);
+      // const newList = [...list, ans];
+      // setAnswer(ans);
+      // setList(newList);
+      // setInput("");
     } 
     catch (err: any) {
       console.log(err);
@@ -74,6 +105,26 @@ export const Evaluate = () => {
           Evaluate
         </Button>
       </Stack>
+      <ButtonGroup disableElevation variant="contained">
+            <Button 
+            onClick = {() => setInput(input + "π")}
+            sx = {{
+              mt: 2,
+              fontSize: 30
+            }}>𝝅</Button>
+            <Button 
+            onClick = {() => setInput(input + "√()")}
+            sx = {{
+              mt:2,
+              fontSize: 20
+            }}>√</Button>
+            <Button 
+            onClick = {() => setInput(input + "^")}
+            sx = {{
+              mt:2,
+              fontSize: 20
+            }}>^</Button>
+        </ButtonGroup>
     </Box>
   );
 };

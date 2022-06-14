@@ -106,13 +106,23 @@ export const Simplify = () => {
             <Button 
             onClick = {() => setInput(input + "π")}
             sx = {{
+              mt:2, 
               fontSize: 30
             }}>𝝅</Button>
+
             <Button 
             onClick = {() => setInput(input + "√()")}
             sx = {{
+              mt:2,
               fontSize: 20
             }}>√</Button>
+
+             <Button 
+            onClick = {() => setInput(input + "^")}
+            sx = {{
+              mt:2,
+              fontSize: 20
+            }}>^</Button>
         </ButtonGroup>
       </Box>
 
