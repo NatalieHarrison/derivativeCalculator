@@ -118,6 +118,16 @@ export const Evaluate = () => {
           setList(newList);
           setInput("");
       }
+      // //Third button group
+      // if (input.includes("arccos(")){
+      //   let input2 = input.replaceAll("arc", "a");
+      //   console.log(input2)
+      //   const ans = input + " =" + math.evaluate(input2).toString();
+      //   const newList = [...list, ans];
+      //   setList(newList);
+      //   setInput("");
+      // }
+      
 
       //if user does not select any of the buttons->
       else{
@@ -246,6 +256,17 @@ export const Evaluate = () => {
 
         <Button onClick = {() => setInput(input + "tan()")}
           >tan</Button>
+      </ButtonGroup>
+
+      <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+        <Button onClick = {() => setInput(input + "arccos()")}
+          >arccos</Button>
+
+        <Button onClick = {() => setInput(input + "arcsin()")}
+          >arcsin</Button>
+
+        <Button onClick = {() => setInput(input + "arctan()")}
+          >arctan</Button>
       </ButtonGroup>
       </Stack>
         
