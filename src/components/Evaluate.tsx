@@ -110,6 +110,15 @@ export const Evaluate = () => {
         }
       }
 
+      //Second button group 
+      if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
+        // let input2 = input.replaceAll("cos" ,"sqrt");
+        const ans = input + " = " + math.evaluate(input).toString();
+        const newList = [...list, ans];
+          setList(newList);
+          setInput("");
+      }
+
       //if user does not select any of the buttons->
       else{
         console.log(math.evaluate(input));
@@ -172,7 +181,8 @@ export const Evaluate = () => {
           Evaluate
         </Button>
       </Stack>
-
+      
+      <Stack>
       <ButtonGroup sx = {{mt:2}}disableElevation variant="contained">
             <Button 
             onClick = {() => setInput(input + "π")}
@@ -222,10 +232,22 @@ export const Evaluate = () => {
                sx = {{
                 fontSize: 20
               }}> = </MenuItem>
-
             </Select>
             </FormControl>
       </ButtonGroup>
+
+      
+      <ButtonGroup sx = {{mt:2}}disableElevation variant="contained">
+        <Button onClick = {() => setInput(input + "cos()")}
+          >cos</Button>
+
+        <Button onClick = {() => setInput(input + "sin()")}
+          >sin</Button>
+
+        <Button onClick = {() => setInput(input + "tan()")}
+          >tan</Button>
+      </ButtonGroup>
+      </Stack>
         
     </Box>
   );
