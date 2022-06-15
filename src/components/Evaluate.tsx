@@ -7,7 +7,6 @@ export const Evaluate = () => {
   const math = create(all);
 
   const [input, setInput] = useState(""); //used to clear the input field after evaluate button is clicked
-  const [answer, setAnswer] = useState("");
   const [list, setList] = useState<string[]>([]); //Used to create a list of user inputs 
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
 
@@ -27,7 +26,6 @@ export const Evaluate = () => {
         console.log(input2)
         const ans = input + " =" + math.evaluate(input2).toString();
         const newList = [...list, ans];
-        setAnswer(ans);
         setList(newList);
         setInput("");
       }
@@ -35,7 +33,6 @@ export const Evaluate = () => {
         let input2 = input.replaceAll("√" ,"sqrt");
         const ans = input + " =" + math.simplify(input2).toString();
         const newList = [...list, ans];
-          setAnswer(ans);
           setList(newList);
           setInput("");
       }
@@ -47,14 +44,14 @@ export const Evaluate = () => {
         if (ans == "1"){
           var ansTrueFalse = input + " =" + " true";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
         else {
           var ansTrueFalse = input + " =" + " false";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
@@ -65,14 +62,14 @@ export const Evaluate = () => {
         if (ans == "1"){
           var ansTrueFalse = input + " =" + " true";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
         else {
           var ansTrueFalse = input + " =" + " false";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
@@ -82,14 +79,14 @@ export const Evaluate = () => {
         if (ans == "1"){
           var ansTrueFalse = input + " =" + " true";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
         else {
           var ansTrueFalse = input + " =" + " false";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
@@ -99,14 +96,14 @@ export const Evaluate = () => {
         if (ans == "1"){
           var ansTrueFalse = input + " =" + " true";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
         else {
           var ansTrueFalse = input + " =" + " false";
           const newList = [...list, ansTrueFalse];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
@@ -117,7 +114,7 @@ export const Evaluate = () => {
         console.log(math.evaluate(input));
           const ans = input + " = " + math.simplify(input);
           const newList = [...list, ans];
-          setAnswer(ans);
+             
           setList(newList);
           setInput("");
         }
