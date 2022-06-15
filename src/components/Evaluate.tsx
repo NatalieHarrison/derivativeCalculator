@@ -74,24 +74,7 @@ export const Evaluate = () => {
           setInput("");
         }
       }
-      if (input.includes("<")){
-        const ans = math.simplify(input).toString();
-        if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
-          const newList = [...list, ansTrueFalse];
-             
-          setList(newList);
-          setInput("");
-        }
-        else {
-          var ansTrueFalse = input + " =" + " false";
-          const newList = [...list, ansTrueFalse];
-             
-          setList(newList);
-          setInput("");
-        }
-      }
-      if (input.includes(">")){
+      if (input.includes(">") ||input.includes("<") ){
         const ans = math.simplify(input).toString();
         if (ans == "1"){
           var ansTrueFalse = input + " =" + " true";

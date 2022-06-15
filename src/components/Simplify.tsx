@@ -1,4 +1,4 @@
-import { TextField, Button, Stack, Box, List, ButtonGroup} from "@mui/material";
+import { TextField, Button, Stack, Box, List, ButtonGroup, FormControl, Select, InputLabel, MenuItem, SelectChangeEvent} from "@mui/material";
 import React, { useState } from "react";
 import { create, all } from "mathjs";
 
@@ -9,6 +9,11 @@ export const Simplify = () => {
   const [answer, setAnswer] = useState("");
 
   const [list, setList] = useState<string[]>([]);
+  const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
+    //Used for button group: select component 
+    const handleChange = (event: SelectChangeEvent) => {
+      setSelectValue(event.target.value as string);
+    };
 
 
   const handleClick = () => {
@@ -37,6 +42,65 @@ export const Simplify = () => {
           setList(newList);
           setInput("");
       }
+
+      //Apart of the button group- Select component items include: <=, <, >=, >
+      if (input.includes("≤")){
+        let input2 = input.replaceAll("≤" ,"<=");
+        const ans = math.simplify(input2).toString();
+        if (ans == "1"){
+          var ansTrueFalse = input + " =" + " true";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+        else {
+          var ansTrueFalse = input + " =" + " false";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+      }
+      if (input.includes("≥")){
+        let input2 = input.replaceAll("≥" ,">=");
+        const ans = math.simplify(input2).toString();
+        if (ans == "1"){
+          var ansTrueFalse = input + " =" + " true";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+        else {
+          var ansTrueFalse = input + " =" + " false";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+      }
+      if (input.includes("<") ||input.includes(">") ){
+        const ans = math.simplify(input).toString();
+        if (ans == "1"){
+          var ansTrueFalse = input + " =" + " true";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+        else {
+          var ansTrueFalse = input + " =" + " false";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+      }
+
+
+
+
       else{
         console.log(math.evaluate(input));
           const ans = input + " = " + math.simplify(input);
@@ -45,13 +109,6 @@ export const Simplify = () => {
           setList(newList);
           setInput("");
         }
-      
-      // const ans = input + "=" + math.simplify(input).toString();
-      // const newList = [...list, ans];
-      // setAnswer(ans);
-      // setList(newList);
-      // setInput("");
-     
     }
     catch (err: any) {
       console.log(err);
@@ -102,7 +159,7 @@ export const Simplify = () => {
             Evaluate
           </Button>
         </Stack>
-        <ButtonGroup disableElevation variant="contained">
+        <ButtonGroup sx = {{mt:2}} disableElevation variant="contained">
             <Button 
             onClick = {() => setInput(input + "π")}
             sx = {{
@@ -123,6 +180,34 @@ export const Simplify = () => {
               mt:2,
               fontSize: 20
             }}>^</Button>
+
+            <FormControl sx={{ width: 50 }}> 
+            <InputLabel sx = {{mt: 2, height: 67}}>&lt;</InputLabel>
+            
+            <Select
+              value={selectValue}
+              label= "&lt;"
+              onChange={handleChange}
+              sx = {{mt: 2, height:65}}
+            >
+              
+              <MenuItem value={"<"} onClick = {() => setInput(input + "<")}   > &lt; </MenuItem>
+
+              <MenuItem value = {"≤"} onClick = {() => setInput(input + "≤")}  
+              sx = {{
+                fontSize: 20
+              }}> ≤ </MenuItem>
+
+              <MenuItem value = {">"} onClick = {() => setInput(input + ">")}
+               sx = {{
+              }}> &gt;</MenuItem>
+
+              <MenuItem value = {"≥"} onClick = {() => setInput(input + "≥")}
+              sx = {{
+                fontSize: 20
+              }}> ≥ </MenuItem>  
+            </Select>
+            </FormControl>
         </ButtonGroup>
       </Box>
 
