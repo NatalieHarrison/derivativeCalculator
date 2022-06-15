@@ -31,7 +31,7 @@ export const Evaluate = () => {
       }
       if (input.includes("√(")){
         let input2 = input.replaceAll("√" ,"sqrt");
-        const ans = input + " =" + math.simplify(input2).toString();
+        const ans = input + " =" + math.  evaluate(input2).toString();
         const newList = [...list, ans];
           setList(newList);
           setInput("");
@@ -40,16 +40,16 @@ export const Evaluate = () => {
       //Apart of the button group- Select component items include: <=, <, >=, >
       if (input.includes("≤")){
         let input2 = input.replaceAll("≤" ,"<=");
-        const ans = math.simplify(input2).toString();
+        const ans = math.  evaluate(input2).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input + " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -58,16 +58,16 @@ export const Evaluate = () => {
       }
       if (input.includes("≥")){
         let input2 = input.replaceAll("≥" ,">=");
-        const ans = math.simplify(input2).toString();
+        const ans = math.  evaluate(input2).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input + " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -76,16 +76,16 @@ export const Evaluate = () => {
       }
       if (input.includes("=")){
         let input2 = input.replaceAll("=" ,"==");
-        const ans = math.simplify(input2).toString();
+        const ans = math.  evaluate(input2).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input +  " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input +  " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -93,16 +93,16 @@ export const Evaluate = () => {
         }
       }
       if (input.includes(">") ||input.includes("<") ){
-        const ans = math.simplify(input).toString();
+        const ans = math.  evaluate(input).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input +  " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -113,7 +113,7 @@ export const Evaluate = () => {
       //if user does not select any of the buttons->
       else{
         console.log(math.evaluate(input));
-          const ans = input + " = " + math.simplify(input);
+          const ans = input + " = " + math.evaluate(input);
           const newList = [...list, ans];
              
           setList(newList);

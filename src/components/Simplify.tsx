@@ -48,14 +48,14 @@ export const Simplify = () => {
         let input2 = input.replaceAll("≤" ,"<=");
         const ans = math.simplify(input2).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input + " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -66,14 +66,14 @@ export const Simplify = () => {
         let input2 = input.replaceAll("≥" ,">=");
         const ans = math.simplify(input2).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input +  " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -101,14 +101,14 @@ export const Simplify = () => {
       if (input.includes("<") ||input.includes(">") ){
         const ans = math.simplify(input).toString();
         if (ans == "1"){
-          var ansTrueFalse = input + " =" + " true";
+          var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
           setInput("");
         }
         else {
-          var ansTrueFalse = input + " =" + " false";
+          var ansTrueFalse = input + " false";
           const newList = [...list, ansTrueFalse];
              
           setList(newList);
@@ -117,7 +117,7 @@ export const Simplify = () => {
       }
 
       else{
-        console.log(math.evaluate(input));
+        console.log(math.simplify(input));
           const ans = input + " = " + math.simplify(input);
           const newList = [...list, ans];
           setAnswer(ans);
