@@ -80,6 +80,24 @@ export const Simplify = () => {
           setInput("");
         }
       }
+      if (input.includes("=")){
+        let input2 = input.replaceAll("=" ,"==");
+        const ans = math.simplify(input2).toString();
+        if (ans == "1"){
+          var ansTrueFalse = input + " true";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+        else {
+          var ansTrueFalse = input +  " false";
+          const newList = [...list, ansTrueFalse];
+             
+          setList(newList);
+          setInput("");
+        }
+      }
       if (input.includes("<") ||input.includes(">") ){
         const ans = math.simplify(input).toString();
         if (ans == "1"){
@@ -97,9 +115,6 @@ export const Simplify = () => {
           setInput("");
         }
       }
-
-
-
 
       else{
         console.log(math.evaluate(input));
@@ -206,6 +221,11 @@ export const Simplify = () => {
               sx = {{
                 fontSize: 20
               }}> ≥ </MenuItem>  
+
+              <MenuItem value = {"="} onClick = {() => setInput(input + "=")}
+               sx = {{
+                fontSize: 20
+              }}> = </MenuItem>
             </Select>
             </FormControl>
         </ButtonGroup>
