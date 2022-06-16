@@ -264,18 +264,28 @@ export const Simplify = () => {
 
           <Button onClick = {() => setInput(input + "tan()")}
             >tan</Button>
+
+          <Button onClick = {unHideInverse}> Inverse </Button>
         </ButtonGroup>
+        {openInverse && (
+            <div>
+              <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+              <Button onClick = {() => setInput(input + "arccos()")}
+                >arccos</Button>
 
-        <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
-          <Button onClick = {() => setInput(input + "arccos()")}
-            >arccos</Button>
+              <Button onClick = {() => setInput(input + "arcsin()")}
+                >arcsin</Button>
 
-          <Button onClick = {() => setInput(input + "arcsin()")}
-            >arcsin</Button>
+              <Button onClick = {() => setInput(input + "arctan()")}
+                >arctan</Button>
+            </ButtonGroup>
 
-          <Button onClick = {() => setInput(input + "arctan()")}
-            >arctan</Button>
-        </ButtonGroup>
+            </div>
+          )}
+
+          {openInverse &&<Box/>}
+
+      
         </Stack>
       </Box>
 

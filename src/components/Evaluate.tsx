@@ -98,7 +98,7 @@ export const Evaluate = () => {
         }
       }
       if (input.includes(">") ||input.includes("<") ){
-        const ans = math.  evaluate(input).toString();
+        const ans = math.evaluate(input).toString();
         if (ans == "1"){
           var ansTrueFalse = input + " true";
           const newList = [...list, ansTrueFalse];
