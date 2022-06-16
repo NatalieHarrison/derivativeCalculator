@@ -261,9 +261,9 @@ export const Evaluate = () => {
         <Button onClick = {() => setInput(input + "tan()")}
           >tan</Button>
 
-          <Button onClick = {unHideInverse}> Inverse </Button>
+        <Button onClick = {unHideInverse}> Inverse </Button>
         </ButtonGroup>
-          {openInverse && (
+        {openInverse && (
             <div>
               <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
               <Button onClick = {() => setInput(input + "arccos()")}

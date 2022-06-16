@@ -16,11 +16,10 @@ export const Simplify = () => {
       setSelectValue(event.target.value as string);
     };
 
+    const unHideInverse = () => {
+      setOpenInverse((current) => !current);
+    }
 
-  const unHideInverse = () => {
-    setOpenInverse((prev) => !prev);
-  }
-    //Mostly for keyboard symbols
   const handleClick = () => {
     try {
       if (input === "" || input === undefined || input === null) {
@@ -121,21 +120,21 @@ export const Simplify = () => {
         }
       }
 
-      //button group
-      if (input.includes("arc")){
-        let input2 = input.replaceAll("arc", "a");
-        console.log(input2)
-        const ans = input + " =" + math.simplify(input2).toString();
-        const newList = [...list, ans];
-        setList(newList);
-        setInput("");
-      }
-       // button group
-      if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
+      //  button group
+      if (!input.includes("arc") && (input.includes("cos(")|| input.includes("sin(") || input.includes("tan("))) {
         const ans = input + " = " + math.simplify(input).toString();
         const newList = [...list, ans];
           setList(newList);
           setInput("");
+      }
+      //button group
+      if (input.includes("arc")){
+        let input2 = input.replaceAll("arc", "a");
+        console.log(input2)
+        const ans = input + " = " + math.simplify(input2).toString();
+        const newList = [...list, ans];
+        setList(newList);
+        setInput("");
       }
 
       else{
