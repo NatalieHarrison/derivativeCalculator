@@ -201,20 +201,20 @@ export const Evaluate = () => {
             <Button 
             onClick = {() => setInput(input + "π")}
             sx = {{
-              
+              width: 62.5,
               fontSize: 30
             }}>𝝅</Button>
             <Button 
             onClick = {() => setInput(input + "√()")}
             sx = {{
-              
+              width: 62.5,
               fontSize: 20
             }}>√</Button>
             
             <Button 
             onClick = {() => setInput(input + "^")}
             sx = {{
-              
+              width: 62.5,
               fontSize: 20
             }}>^</Button>
             <FormControl sx={{ width: 50 }}> 
@@ -224,7 +224,7 @@ export const Evaluate = () => {
               value={selectValue}
               label= "&lt;"
               onChange={handleChange}
-              sx = {{height: 65}}
+              sx = {{height: 65, width: 62.5}}
             >
               
               <MenuItem value={'<'} onClick = {() => setInput(input + "<")}   > &lt; </MenuItem>
@@ -251,7 +251,7 @@ export const Evaluate = () => {
       </ButtonGroup>
 
       
-      <ButtonGroup sx = {{mt:2}}disableElevation variant="contained">
+      <ButtonGroup sx = {{mt:.2, width: 250}}disableElevation variant="contained">
         <Button onClick = {() => setInput(input + "cos()")}
           >cos</Button>
 
@@ -265,7 +265,7 @@ export const Evaluate = () => {
         </ButtonGroup>
         {openInverse && (
             <div>
-              <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+              <ButtonGroup sx = {{mt:.2, width: 250}}disableElevation variant="contained">
               <Button onClick = {() => setInput(input + "arccos()")}
                 >arccos</Button>
 

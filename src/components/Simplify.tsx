@@ -201,6 +201,7 @@ export const Simplify = () => {
             <Button 
             onClick = {() => setInput(input + "π")}
             sx = {{
+              width: 62.5,
               mt:2, 
               fontSize: 30
             }}>𝝅</Button>
@@ -208,6 +209,7 @@ export const Simplify = () => {
             <Button 
             onClick = {() => setInput(input + "√()")}
             sx = {{
+              width: 62.5,
               mt:2,
               fontSize: 20
             }}>√</Button>
@@ -215,12 +217,13 @@ export const Simplify = () => {
              <Button 
             onClick = {() => setInput(input + "^")}
             sx = {{
+              width: 62.5,
               mt:2,
               fontSize: 20
             }}>^</Button>
           
 
-            <FormControl sx={{ width: 50 }}> 
+            <FormControl sx={{ width: 62.5 }}> 
             <InputLabel sx = {{mt: 2, height: 67}}>&lt;</InputLabel>
             
             <Select
@@ -255,7 +258,7 @@ export const Simplify = () => {
             </ButtonGroup>
 
           
-        <ButtonGroup sx = {{mt:2}}disableElevation variant="contained">
+        <ButtonGroup sx = {{mt:.2, width: 250}}disableElevation variant="contained">
           <Button onClick = {() => setInput(input + "cos()")}
             >cos</Button>
 
@@ -269,7 +272,7 @@ export const Simplify = () => {
         </ButtonGroup>
         {openInverse && (
             <div>
-              <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+              <ButtonGroup sx = {{mt:.2, width: 250}}disableElevation variant="contained">
               <Button onClick = {() => setInput(input + "arccos()")}
                 >arccos</Button>
 
