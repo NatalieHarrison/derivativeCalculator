@@ -9,11 +9,16 @@ export const Evaluate = () => {
   const [input, setInput] = useState(""); //used to clear the input field after evaluate button is clicked
   const [list, setList] = useState<string[]>([]); //Used to create a list of user inputs 
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
+  const [openInverse, setOpenInverse] = React.useState(false);
 
   //Used for button group: select component 
   const handleChange = (event: SelectChangeEvent) => {
     setSelectValue(event.target.value as string);
   };
+
+  const unHideInverse = () => {
+    setOpenInverse((current) => !current);
+  }
 
   const handleClick = () => {
     try {
@@ -109,9 +114,8 @@ export const Evaluate = () => {
           setInput("");
         }
       }
-
-      // Second button group
-      // //Third button group
+     
+      //button group
       if (input.includes("arc")){
         let input2 = input.replaceAll("arc", "a");
         console.log(input2)
@@ -120,8 +124,8 @@ export const Evaluate = () => {
         setList(newList);
         setInput("");
       }
+       // button group
       if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
-        // let input2 = input.replaceAll("cos" ,"sqrt");
         const ans = input + " = " + math.evaluate(input).toString();
         const newList = [...list, ans];
           setList(newList);
@@ -256,18 +260,27 @@ export const Evaluate = () => {
 
         <Button onClick = {() => setInput(input + "tan()")}
           >tan</Button>
-      </ButtonGroup>
 
-      <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
-        <Button onClick = {() => setInput(input + "arccos()")}
-          >arccos</Button>
+          <Button onClick = {unHideInverse}> Inverse </Button>
+        </ButtonGroup>
+          {openInverse && (
+            <div>
+              <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+              <Button onClick = {() => setInput(input + "arccos()")}
+                >arccos</Button>
 
-        <Button onClick = {() => setInput(input + "arcsin()")}
-          >arcsin</Button>
+              <Button onClick = {() => setInput(input + "arcsin()")}
+                >arcsin</Button>
 
-        <Button onClick = {() => setInput(input + "arctan()")}
-          >arctan</Button>
-      </ButtonGroup>
+              <Button onClick = {() => setInput(input + "arctan()")}
+                >arctan</Button>
+            </ButtonGroup>
+
+            </div>
+          )}
+
+          {openInverse &&<Box/>}
+      
       </Stack>
         
     </Box>

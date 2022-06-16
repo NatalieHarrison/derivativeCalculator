@@ -10,12 +10,17 @@ export const Simplify = () => {
 
   const [list, setList] = useState<string[]>([]);
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
+  const [openInverse, setOpenInverse] = React.useState(false);
     //Used for button group: select component 
     const handleChange = (event: SelectChangeEvent) => {
       setSelectValue(event.target.value as string);
     };
 
 
+  const unHideInverse = () => {
+    setOpenInverse((prev) => !prev);
+  }
+    //Mostly for keyboard symbols
   const handleClick = () => {
     try {
       if (input === "" || input === undefined || input === null) {
@@ -116,6 +121,23 @@ export const Simplify = () => {
         }
       }
 
+      //button group
+      if (input.includes("arc")){
+        let input2 = input.replaceAll("arc", "a");
+        console.log(input2)
+        const ans = input + " =" + math.simplify(input2).toString();
+        const newList = [...list, ans];
+        setList(newList);
+        setInput("");
+      }
+       // button group
+      if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
+        const ans = input + " = " + math.simplify(input).toString();
+        const newList = [...list, ans];
+          setList(newList);
+          setInput("");
+      }
+
       else{
         console.log(math.simplify(input));
           const ans = input + " = " + math.simplify(input);
@@ -174,6 +196,8 @@ export const Simplify = () => {
             Evaluate
           </Button>
         </Stack>
+
+        <Stack>
         <ButtonGroup sx = {{mt:2}} disableElevation variant="contained">
             <Button 
             onClick = {() => setInput(input + "π")}
@@ -195,6 +219,7 @@ export const Simplify = () => {
               mt:2,
               fontSize: 20
             }}>^</Button>
+          
 
             <FormControl sx={{ width: 50 }}> 
             <InputLabel sx = {{mt: 2, height: 67}}>&lt;</InputLabel>
@@ -228,7 +253,31 @@ export const Simplify = () => {
               }}> = </MenuItem>
             </Select>
             </FormControl>
+            </ButtonGroup>
+
+          
+        <ButtonGroup sx = {{mt:2}}disableElevation variant="contained">
+          <Button onClick = {() => setInput(input + "cos()")}
+            >cos</Button>
+
+          <Button onClick = {() => setInput(input + "sin()")}
+            >sin</Button>
+
+          <Button onClick = {() => setInput(input + "tan()")}
+            >tan</Button>
         </ButtonGroup>
+
+        <ButtonGroup sx = {{mt:.2}}disableElevation variant="contained">
+          <Button onClick = {() => setInput(input + "arccos()")}
+            >arccos</Button>
+
+          <Button onClick = {() => setInput(input + "arcsin()")}
+            >arcsin</Button>
+
+          <Button onClick = {() => setInput(input + "arctan()")}
+            >arctan</Button>
+        </ButtonGroup>
+        </Stack>
       </Box>
 
     );
