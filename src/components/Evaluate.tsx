@@ -110,7 +110,16 @@ export const Evaluate = () => {
         }
       }
 
-      //Second button group 
+      // Second button group
+      // //Third button group
+      if (input.includes("arc")){
+        let input2 = input.replaceAll("arc", "a");
+        console.log(input2)
+        const ans = input + " =" + math.evaluate(input2).toString();
+        const newList = [...list, ans];
+        setList(newList);
+        setInput("");
+      }
       if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
         // let input2 = input.replaceAll("cos" ,"sqrt");
         const ans = input + " = " + math.evaluate(input).toString();
@@ -118,15 +127,6 @@ export const Evaluate = () => {
           setList(newList);
           setInput("");
       }
-      // //Third button group
-      // if (input.includes("arccos(")){
-      //   let input2 = input.replaceAll("arc", "a");
-      //   console.log(input2)
-      //   const ans = input + " =" + math.evaluate(input2).toString();
-      //   const newList = [...list, ans];
-      //   setList(newList);
-      //   setInput("");
-      // }
       
 
       //if user does not select any of the buttons->
