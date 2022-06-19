@@ -8,6 +8,7 @@ export const Evaluate = () => {
 
   const [input, setInput] = useState(""); //used to clear the input field after evaluate button is clicked
   const [list, setList] = useState<string[]>([]); //Used to create a list of user inputs 
+  const [answer, setAnswer] = useState()
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
   const [openInverse, setOpenInverse] = React.useState(false);
 
@@ -25,6 +26,7 @@ export const Evaluate = () => {
       if (input === "" || input === undefined || input === null) {
         throw new Error("missing");
       }
+
       //If user clicks a button from button group 
       if (input.includes("π")){
         let input2 = input.replaceAll("π", "pi");
