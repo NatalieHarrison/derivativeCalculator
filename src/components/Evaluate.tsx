@@ -7,8 +7,8 @@ export const Evaluate = () => {
   const math = create(all);
 
   const [input, setInput] = useState(""); //used to clear the input field after evaluate button is clicked
+  const [replace, setReplace] = useState("");
   const [list, setList] = useState<string[]>([]); //Used to create a list of user inputs 
-  const [answer, setAnswer] = useState()
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
   const [openInverse, setOpenInverse] = React.useState(false);
 
@@ -28,20 +28,14 @@ export const Evaluate = () => {
       }
 
       //If user clicks a button from button group 
-      if (input.includes("π")){
-        let input2 = input.replaceAll("π", "pi");
-        console.log(input2)
-        const ans = input + " =" + math.evaluate(input2).toString();
+      if (input.includes("π") || input.includes("√(") || input.includes("arc")){
+        let pi = input.replaceAll("π", "pi") 
+        let sqrt = pi.replaceAll("√" ,"sqrt")
+        let arc = sqrt.replaceAll("arc", "a")
+        const ans = input + " =" + math.evaluate(arc).toString();
         const newList = [...list, ans];
         setList(newList);
         setInput("");
-      }
-      if (input.includes("√(")){
-        let input2 = input.replaceAll("√" ,"sqrt");
-        const ans = input + " =" + math.  evaluate(input2).toString();
-        const newList = [...list, ans];
-          setList(newList);
-          setInput("");
       }
 
       //Apart of the button group- Select component items include: <=, <, >=, >
@@ -118,21 +112,22 @@ export const Evaluate = () => {
       }
      
       //button group
-      if (input.includes("arc")){
-        let input2 = input.replaceAll("arc", "a");
-        console.log(input2)
-        const ans = input + " =" + math.evaluate(input2).toString();
-        const newList = [...list, ans];
-        setList(newList);
-        setInput("");
-      }
+      // if (input.includes("arc")){
+      //   let input2 = input.replaceAll("arc", "a");
+      //   console.log(input2)
+      //   const ans = input + " =" + math.evaluate(input2).toString();
+      //   const newList = [...list, ans];
+      //   setList(newList);
+      //   setInput("");
+      // }
+
        // button group
-      if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
-        const ans = input + " = " + math.evaluate(input).toString();
-        const newList = [...list, ans];
-          setList(newList);
-          setInput("");
-      }
+      // if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
+      //   const ans = input + " = " + math.evaluate(input).toString();
+      //   const newList = [...list, ans];
+      //     setList(newList);
+      //     setInput("");
+      // }
       
 
       //if user does not select any of the buttons->
