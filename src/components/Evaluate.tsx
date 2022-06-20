@@ -7,7 +7,6 @@ export const Evaluate = () => {
   const math = create(all);
 
   const [input, setInput] = useState(""); //used to clear the input field after evaluate button is clicked
-  const [replace, setReplace] = useState("");
   const [list, setList] = useState<string[]>([]); //Used to create a list of user inputs 
   const [selectValue, setSelectValue] = React.useState(""); //used for button group: select component
   const [openInverse, setOpenInverse] = React.useState(false);
