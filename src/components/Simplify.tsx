@@ -25,27 +25,43 @@ export const Simplify = () => {
       if (input === "" || input === undefined || input === null) {
         throw new Error("missing");
       }
-      if (input.includes("π")){
-        let input2 = input.replaceAll("π", "pi");
-        console.log(input2)
-        const ans = input + "=" + math.simplify(input2).toString();
-        
+
+
+      if (input.includes("π") || input.includes("√(") || input.includes("arc")){
+        let pi = input.replaceAll("π", "pi") 
+        let sqrt = pi.replaceAll("√" ,"sqrt")
+        let arc = sqrt.replaceAll("arc", "a")
+        const ans = input + " =" + math.simplify(arc).toString();
         if (ans.includes("pi")){
-          let ansAddPiSymbol = ans.replaceAll("pi","π" )
-          const newList = [...list, ansAddPiSymbol];
-          setAnswer(ansAddPiSymbol);
+          let ansPiSpellingRemoved = ans.replaceAll("pi","π" )
+          const newList = [...list, ansPiSpellingRemoved];
           setList(newList);
           setInput("");
+
         }
+        
       }
-      if (input.includes("√(")){
-        let input2 = input.replaceAll("√" ,"sqrt");
-        const ans = input + "=" + math.simplify(input2).toString();
-        const newList = [...list, ans];
-          setAnswer(ans);
-          setList(newList);
-          setInput("");
-      }
+      // if (input.includes("π")){
+      //   let input2 = input.replaceAll("π", "pi");
+      //   console.log(input2)
+      //   const ans = input + "=" + math.simplify(input2).toString();
+        
+      //   if (ans.includes("pi")){
+      //     let ansAddPiSymbol = ans.replaceAll("pi","π" )
+      //     const newList = [...list, ansAddPiSymbol];
+      //     setAnswer(ansAddPiSymbol);
+      //     setList(newList);
+      //     setInput("");
+      //   }
+      // }
+      // if (input.includes("√(")){
+      //   let input2 = input.replaceAll("√" ,"sqrt");
+      //   const ans = input + "=" + math.simplify(input2).toString();
+      //   const newList = [...list, ans];
+      //     setAnswer(ans);
+      //     setList(newList);
+      //     setInput("");
+      // }
 
       //Apart of the button group- Select component items include: <=, <, >=, >
       if (input.includes("≤")){
@@ -121,21 +137,21 @@ export const Simplify = () => {
       }
 
       //  button group
-      if (!input.includes("arc") && (input.includes("cos(")|| input.includes("sin(") || input.includes("tan("))) {
-        const ans = input + " = " + math.simplify(input).toString();
-        const newList = [...list, ans];
-          setList(newList);
-          setInput("");
-      }
+      // if (!input.includes("arc") && (input.includes("cos(")|| input.includes("sin(") || input.includes("tan("))) {
+      //   const ans = input + " = " + math.simplify(input).toString();
+      //   const newList = [...list, ans];
+      //     setList(newList);
+      //     setInput("");
+      // }
       //button group
-      if (input.includes("arc")){
-        let input2 = input.replaceAll("arc", "a");
-        console.log(input2)
-        const ans = input + " = " + math.simplify(input2).toString();
-        const newList = [...list, ans];
-        setList(newList);
-        setInput("");
-      }
+      // if (input.includes("arc")){
+      //   let input2 = input.replaceAll("arc", "a");
+      //   console.log(input2)
+      //   const ans = input + " = " + math.simplify(input2).toString();
+      //   const newList = [...list, ans];
+      //   setList(newList);
+      //   setInput("");
+      // }
 
       else{
         console.log(math.simplify(input));

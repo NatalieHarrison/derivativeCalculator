@@ -110,25 +110,6 @@ export const Evaluate = () => {
           setInput("");
         }
       }
-     
-      //button group
-      // if (input.includes("arc")){
-      //   let input2 = input.replaceAll("arc", "a");
-      //   console.log(input2)
-      //   const ans = input + " =" + math.evaluate(input2).toString();
-      //   const newList = [...list, ans];
-      //   setList(newList);
-      //   setInput("");
-      // }
-
-       // button group
-      // if (input.includes("cos(")|| input.includes("sin(") || input.includes("tan(") ) {
-      //   const ans = input + " = " + math.evaluate(input).toString();
-      //   const newList = [...list, ans];
-      //     setList(newList);
-      //     setInput("");
-      // }
-      
 
       //if user does not select any of the buttons->
       else{
