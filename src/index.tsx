@@ -2,7 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+export {Simplify} from './components/Simplify';
+export {Derivative} from './components/Derive'
+export {Evaluate} from './components/Evaluate'
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
